@@ -1,0 +1,57 @@
+module Tuples where
+
+-- Tupla, é basicamente como se fosse uma lista que carrega vários tipos
+--
+-- Prelude> :t (1,2,3)
+-- (1,2,3) :: (Num t, Num t1, Num t2) => (t, t1, t2)
+--
+-- Uma tupla tem tamanho e tipos definidos, você não pode adicionar ou retirar elementos de uma tupla.
+--
+-- Prelude> :t (1,"Word",False)
+-- (1,"Word",False) :: Num t => (t, [Char], Bool)
+--
+-- 
+-- Você pode adicionar tuplas a uma lista. Porém toda lista pertence a um mesmo tipo.
+--
+-- Caso você crie uma lista de tuplas, a lista deverá sempre conter sempre tuplas exatamente do mesmo tipo
+--
+-- Prelude> [(1,"Word"),(5,"Test")]
+-- [(1,"Word"),(5,"Test")]
+--
+-- Prelude> :t [(1,"Word"),(5,"Test")]
+-- [(1,"Word"),(5,"Test")] :: Num t => [(t, [Char])]
+--
+-- Percebe-se que o haskell entende que geramos uma lista de tuplas Num t => [(t, [Char])]
+--
+-- Caso colocarmos tuplas de tipos diferentes, teremos problemas.
+--
+-- Para a tuplas, temos uma função bem interessante chamada lookup, podemos usa-la para simularmos um array associativo do php, por exemplo, ou um Hash no Ruby.
+--
+-- Prelude> :t lookup
+-- lookup :: Eq a => a -> [(a, b)] -> Maybe b
+--
+-- A função recebe um valor e uma lista de tuplas que contem um valor do mesmo tipo que a e um outro qualquer valor b
+--
+-- Se encontrar, retorna o valor b que está na mesma tupla que a, como sendo um Maybe b.
+--
+-- Se não encontrar o valor, retorna nothing.
+--
+-- Maybe é um tipo no haskell com a seguinte definição:
+--
+-- data Maybe a = Nothing | Just a 	-- Defined in ‘GHC.Base’
+-- instance Eq a => Eq (Maybe a) -- Defined in ‘GHC.Base’
+-- instance Monad Maybe -- Defined in ‘GHC.Base’
+-- instance Functor Maybe -- Defined in ‘GHC.Base’
+-- instance Ord a => Ord (Maybe a) -- Defined in ‘GHC.Base’
+-- instance Read a => Read (Maybe a) -- Defined in ‘GHC.Read’
+-- instance Show a => Show (Maybe a) -- Defined in ‘GHC.Show’
+-- instance Applicative Maybe -- Defined in ‘GHC.Base’
+-- instance Foldable Maybe -- Defined in ‘Data.Foldable’
+-- instance Traversable Maybe -- Defined in ‘Data.Traversable’
+-- instance Monoid a => Monoid (Maybe a) -- Defined in ‘GHC.Base’
+--
+-- O Maybe representa um tipo de computação. Ele que pode retornar um valor ou nothing,
+-- É utilizado para tornar mais fácil a captura e tratamento de erros, assim como aumentar a consistência do código.
+-- O resultado de uma função que utiliza maybe pode ser, just o tipo ou nada. Ou é um Int ou é nada, por exemplo.
+
+

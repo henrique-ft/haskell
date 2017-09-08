@@ -1,0 +1,91 @@
+O stack tem várias ferramentas que permitem que você interaja com a versão do haskell instalada no seu computador
+
+No GHCI temos alguns comandos que podem ser úteis ao desenvolver nossos programas com haskell
+
+:type ou :t mostra qual é o tipo de um valor
+:info ou :t mostra informações sobre um determinado tipo (onde que foi definido, instâncias, typeclasses e etc..)
+
+Se você colocar, por exemplo :info Num, obterá:
+
+:info Num
+
+class Num a where
+  (+) :: a -> a -> a
+  (-) :: a -> a -> a
+  (*) :: a -> a -> a
+  negate :: a -> a
+  abs :: a -> a
+  signum :: a -> a
+  fromInteger :: Integer -> a
+  {-# MINIMAL (+), (*), abs, signum, fromInteger, (negate | (-)) #-}
+  	-- Defined in ‘GHC.Num’
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+
+-------------
+
+Isso significa que Num é um Typeclass, que é basicamente uma classe abstrata para tipos.
+E está definida no core do GHC, em GHC.Num.
+Significa também, que toda instância de Num, deverá escrever a sua definição para as funções
+
+(+) :: a -> a -> a
+(-) :: a -> a -> a
+(*) :: a -> a -> a
+negate :: a -> a
+abs :: a -> a
+signum :: a -> a
+fromInteger :: Integer -> a
+
+Também mostra que há 5 instâncias de Num definidas no GHC / Core do haskell
+
+instance Num Word -- Defined in ‘GHC.Num’
+instance Num Integer -- Defined in ‘GHC.Num’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Num Float -- Defined in ‘GHC.Float’
+instance Num Double -- Defined in ‘GHC.Float’
+
+Os tipos Word, Integer, Int, Float e Double instanciam Num
+
+-------------
+
+E se colocar :info Int
+
+:info Int
+data Int
+  = ghc-prim-0.5.0.0:GHC.Types.I# ghc-prim-0.5.0.0:GHC.Prim.Int#
+  	-- Defined in ‘ghc-prim-0.5.0.0:GHC.Types’
+instance Bounded Int -- Defined in ‘GHC.Enum’
+instance Enum Int -- Defined in ‘GHC.Enum’
+instance Eq Int -- Defined in ‘ghc-prim-0.5.0.0:GHC.Classes’
+instance Integral Int -- Defined in ‘GHC.Real’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Ord Int -- Defined in ‘ghc-prim-0.5.0.0:GHC.Classes’
+instance Read Int -- Defined in ‘GHC.Read’
+instance Real Int -- Defined in ‘GHC.Real’
+instance Show Int -- Defined in ‘GHC.Show’
+
+-------------
+
+data Int
+  = ghc-prim-0.5.0.0:GHC.Types.I# ghc-prim-0.5.0.0:GHC.Prim.Int#
+  	-- Defined in ‘ghc-prim-0.5.0.0:GHC.Types’
+
+Significa que Int é um tipo definido no core do GHC
+
+instance Bounded Int -- Defined in ‘GHC.Enum’
+instance Enum Int -- Defined in ‘GHC.Enum’
+instance Eq Int -- Defined in ‘ghc-prim-0.5.0.0:GHC.Classes’
+instance Integral Int -- Defined in ‘GHC.Real’
+instance Num Int -- Defined in ‘GHC.Num’
+instance Ord Int -- Defined in ‘ghc-prim-0.5.0.0:GHC.Classes’
+instance Read Int -- Defined in ‘GHC.Read’
+instance Real Int -- Defined in ‘GHC.Real’
+instance Show Int -- Defined in ‘GHC.Show’
+
+Significa que o tipo Int possui instância de 9 typeclasses (Possui os métodos definidos de cada Typeclass definidos nas instâncias)
+
+-------------
+

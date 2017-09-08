@@ -12,7 +12,7 @@ func1 = tail (reverse ['a'..'z'])
 func2 :: String -> [Char]
 func2 "oi" = func1
 
---  Tipos multiplicativos
+-- Tipos multiplicativos
 --
 -- Os tipos multiplicativos são uma tupla disfarçada, são uma tupla "Gourmet"
 

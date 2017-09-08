@@ -1,4 +1,5 @@
 module PatternMatching where
+	
 -- Pattern Matching ----------------------------------------------------------------------------------------
 
 -- Pattern matching é um conceito da programação funcional que consiste no reconhecimento de padrões
