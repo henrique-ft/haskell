@@ -75,3 +75,12 @@ dobraDinheiro (Dinheiro x y) = Dinheiro (x*2) y
 
 somarDinheiro :: Dinheiro -> Dinheiro -> Dinheiro
 somarDinheiro din1 din2 = Dinheiro ( (valor (converterReal din1)) + (valor (converterReal din2)) ) Real
+
+-- Também podemos usar a palavra chave Type, para nomear tipos (facilitar a leitura de uma função por exemplo)
+
+type Inteiro = Integer
+
+-- Se chamarmos no terminal:
+--
+-- DataTypes> 5 :: Inteiro
+-- 5
