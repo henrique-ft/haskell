@@ -84,3 +84,55 @@ type Inteiro = Integer
 --
 -- DataTypes> 5 :: Inteiro
 -- 5
+
+-- POLIMORFISMO PARAMÉTRICO
+
+-- É um tipo algébrico que pode carregar mais de um outro tipo em sua definição.
+-- O 'a' é chamado de TypeParameter
+--
+-- Todos os tipos tem "kind", quando mais type parameteres, maior o "kind" do tipo.
+
+-- 1 + a + a^2 
+data Carteira a = Nada | UmItem a | DoisItens a a 
+
+-- Carteira no caso, tem kind 2, pois recebe um TypeParameter.
+--
+-- Tipos normais tem Kind 1. Então, tipos com kind 4 tem 3 parâmetros, com king 3 tem dois parâmetro e assim por diante.
+--
+-- Para conferir o Kind de um tipo no ghci podemos usar o :kind, ou :k
+--
+-- Tuplas tem Kind 3, e funções também.
+--
+-- Funções são Tuplas "modificadas geneticamente" pois:
+--
+-- f x = x*x
+-- f 1 = 1
+-- f 2 = 4
+-- f 3 = 9
+--
+-- (1,1)
+-- (2,4)
+-- (3,9)
+
+-- Função parcial:
+--
+-- Uma função parcial é uma função que não está definida para todos os pattern matching
+--
+-- Função polimorfica:
+--
+-- É quando a função é programada independente do valor 'dentro da carteira'
+--
+-- É quando a função é programada independente do valor dentro do type parameter
+--
+-- Carteira a
+--
+
+mostrarPrimeiro :: Carteira a -> a
+mostrarPrimeiro (UmItem x) = x
+mostrarPrimeiro (DoisItens x _) = x
+
+mostrar :: Show a => Carteira a -> String
+mostrar (UmItem x) = "UmItem: " ++ show x
+mostrar (DoisItens x _) = "DoisItens: " ++ show x
+mostrar Nada = "Nada
+

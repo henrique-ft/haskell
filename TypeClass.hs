@@ -39,7 +39,6 @@ instance Eq Compass where
   East == East = True
   West == West = True
 
-
 -- Uma maneira simplificada de atribuir instâncias de classes para tipos, é usando a palavra chave deriving.
 --
 -- Para essas classes de tipos simples, é algo mecânico e repetitivo definir os métodos da instância como no exemplo acima.
@@ -68,3 +67,31 @@ instance Num Expression where
   abs (Number a) = Number (abs a)
   signum (Number a) = Number (signum a)
   fromInteger a = (Number a)
+  
+-- Criando instâncias para tipos com polimorfismo paramétrico
+
+data Carteira a = Nada | UmItem a | DoisItens a a 
+
+mostrarPrimeiro :: Carteira a -> a
+mostrarPrimeiro (UmItem x) = x
+mostrarPrimeiro (DoisItens x _) = x
+
+mostrar :: Show a => Carteira a -> String
+mostrar (UmItem x) = "UmItem: " ++ show x
+mostrar (DoisItens x _) = "DoisItens: " ++ show x
+mostrar Nada = "Nada"
+
+-- Show a -> Show para a
+-- Show (Carteira a) -> Show para Carteira que possui um a
+--
+-- Aqui criamos uma instância de Show para (Carteira a) sendo o tipo 'a' uma instância de Show
+--
+-- Para toda carteira 'a' em que o tipo 'a' tiver instância de Show, teremos essa instância
+
+instance Show a => Show (Carteira a) where
+  show Nada = "nada"
+  show (UmItem x) = ""
+  show (DoisItens x y) = ""
+
+-- Dessa mesma maneira, podemos criar instâncias de Show para Carteira Int, Carteira String, Carteira QualquerTipo, etc ..
+
