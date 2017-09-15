@@ -95,3 +95,12 @@ instance Show a => Show (Carteira a) where
 
 -- Dessa mesma maneira, podemos criar instâncias de Show para Carteira Int, Carteira String, Carteira QualquerTipo, etc ..
 
+instance Eq a => Eq (Carteira a) where
+  Nada == Nada = True
+  (UmItem x) == (UmItem y) = x == y -- Nesse caso x e y funcionam como 'variáveis' que o tipo carrega
+  _ == _ = False
+  
+-- Resumindo: para tipos de Kind 2, temos que declarar restrições ao parâmetro variável na declaração instancia
+  
+  
+
