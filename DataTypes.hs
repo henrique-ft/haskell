@@ -134,5 +134,6 @@ mostrarPrimeiro (DoisItens x _) = x
 mostrar :: Show a => Carteira a -> String
 mostrar (UmItem x) = "UmItem: " ++ show x
 mostrar (DoisItens x _) = "DoisItens: " ++ show x
-mostrar Nada = "Nada
+mostrar Nada = "Nada"
+
 

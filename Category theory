@@ -1,0 +1,21 @@
+Teoria das Categorias:
+
+- É uma maneira de representar coisas e como compor estas coisas.
+- Uma categoria é composta por:
+
+1. Coleção de Objetos
+2. Coleção de Morfismos (
+
+    - Um morfismo é uma relação entre dois objetos. 
+    - É a generalização do conceito de função. 
+    - Um morfismo f :: A -> B, relaciona um objeto de entrada A com um de saída B
+)
+3. Noção de composição dos Morfismos
+
+- Uma categorias tem que ter 3 Axiomas (Leis):
+
+1. Para cada objeto existe a identidade (no haskell, a função id).
+2. Elementro neutro.
+3. Associatividade (h.g).f = h.(g.f) não importa a ordem da composição das funções, o resultado da composição tem que ser a mesma.
+
+- A categoria seria uma monoide para as funções, monoides são para valores.
