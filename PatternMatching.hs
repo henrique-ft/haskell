@@ -1,5 +1,5 @@
 module PatternMatching where
-	
+
 -- Pattern Matching ----------------------------------------------------------------------------------------
 
 -- Pattern matching é um conceito da programação funcional que consiste no reconhecimento de padrões
@@ -62,3 +62,41 @@ maria = 'M' : ['a','r','i','a']
 -- <?php
 -- // o PHP não entende uma string como sendo um array de chars
 ------------------------------------------------------------------------------------------------------------
+
+-- No Haskell podemos adicionar parâmetros aos nossos DataTypes
+-- Inclusive, esses parâmetros podem ser recursivos
+
+data Expression = Number Integer | Add Expression Expression | Subtract Expression Expression deriving (Eq, Ord, Show)
+
+calculate :: Expression -> Integer
+calculate (Number x) = x
+calculate (Add x y) = (calculate x) + (calculate y)
+calculate (Subtract x y) = (calculate x) - (calculate y)
+
+-- Pattern Matching de Listas
+
+-- Se formos fazer uma nova função head, por exemplo, que recebe uma lista e retorna o primeiro elemento
+-- Póderíamos fazer dessa maneira:
+
+-- newHead [] = error "Empty list"
+-- newHead [a] = a
+-- newHead [a, b] = a 
+-- newHead [a, b, c] = a 
+-- newHead [a, b, c, d] = a
+
+-- Mas teríamos que seguir esse padrão infinitamente.
+
+-- Então uma convenção usada no haskell é colocar o s no final da variável. 
+-- Indica que é N possibilidades
+
+newHead [a] -> a
+newHead [] = error "empty list"
+-- Poderíamos imaginar fazer dessa maneira, porém está errado. 
+-- newHead [x:xs] = x
+-- Com [x:xs] na verdade estamos dizendo que é uma lista de lista 
+-- A maneira certa é a maneira abaixo
+newHead (x:xs) = x
+
+newTail [a] -> [a]
+newTail [] = error ""
+newTail (x:xs) = xs
